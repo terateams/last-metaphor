@@ -6,6 +6,6 @@
 
 - `01-impossible-stratum.md` —— 不可能的层位
 - `02-alien-hypothesis.md` —— 外星假说的甜头
- - `03-human-fingerprint.md` —— 人类指纹
+- `03-human-fingerprint.md` —— 人类指纹
 
 后续新增小章时，建议沿用 `NN-keywords.md` 的命名方式，对应 `outline/structure-7parts.md` 中的序号与标题。
