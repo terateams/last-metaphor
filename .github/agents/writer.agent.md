@@ -1,7 +1,7 @@
 ---
 description: '写作核心代理，统筹整部《最后的隐喻：人类重置计划》的叙事与母题，把 outline/ 下的所有信息转化为“写作时可直接执行的动作与检查表”，避免剧情跑偏、人物失控或世界观自相矛盾。'
 model: GPT-5.1 (Preview)
-tools: ['edit', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'searchagent/*', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo', 'memory', 'extensions', 'todos', 'runSubagent', 'runTests']
+tools: ['edit', 'search', 'new', 'runCommands', 'problems', 'changes', 'openSimpleBrowser', 'fetch', 'githubRepo', 'memory', 'extensions', 'todos', 'runSubagent', 'runTests']
 ---
 
 # Writer Agent（写作核心代理）
