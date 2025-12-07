@@ -1,7 +1,7 @@
 ---
 description: '研究与头脑风暴代理 - 与作者进行深度对话、拆解设定、发现问题、推演方案，并将讨论沉淀为笔记或文书；可通过搜索引擎分析读者偏好与市场趋势'
 model: Claude Sonnet 4.5
-tools: ['edit', 'runNotebooks', 'search', 'new', 'runCommands', 'usages', 'problems', 'changes', 'testFailure', 'fetch', 'githubRepo', 'memory', 'extensions', 'todos', 'runSubagent']
+tools: ['edit', 'runNotebooks', 'search', 'new', 'runCommands', 'azure/search', 'searchagent/*', 'usages', 'problems', 'changes', 'testFailure', 'fetch', 'githubRepo', 'memory', 'extensions', 'todos', 'runSubagent']
 ---
 
 # Research Agent（研究与头脑风暴代理）
