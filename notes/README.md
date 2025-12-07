@@ -5,11 +5,13 @@
 ## 目录定位
 
 `notes/` 是介于"源代码级 outline"与"公开文本 chapters/docs"之间的**工作区**：
+
 - **不是给读者看的**：可以包含剧透、元讨论、设定推演过程；
 - **不是最终设定**：这里的内容可能是草稿、待验证的想法、多个备选方案；
 - **是思考结晶**：将对话、头脑风暴、结构性审视转化为可复用的设计笔记。
 
 **与其他目录的关系**：
+
 - `outline/` → 确定的世界观、结构、角色设定（相对稳定）
 - `notes/` → 设计过程、伏笔清单、主题分析（动态演化）
 - `chapters/` → 读者可见的正文叙事
@@ -22,6 +24,7 @@
 ### 1. 主题与世界观设计
 
 #### `chaos-vs-precision-meta-theme.md`
+
 - **作用**：记录"混沌 vs 精确"的元主题，"清晰崇拜"的哲学根源与文明周期
 - **何时使用**：
   - 设计高层次对话（委员会辩论、学术讨论）时
@@ -32,6 +35,7 @@
   - 文明周期：混沌 → 秩序化 → 过度优化 → 脆性崩溃 → Reset
 
 #### `sai-measurement-paradox.md`
+
 - **作用**：SAI 指标的信息论基础、Campbell's Law 警告、设定分类（现实延伸 vs 科幻外推）
 - **何时使用**：
   - 写涉及 SAI 测量、指标调整、系统优化的场景时
@@ -47,6 +51,7 @@
 ### 2. 制度机制与现实锚点
 
 #### `corporate-capture-mechanisms.md`
+
 - **作用**：记录"反思为何失效"的六大机制（游说、话语权不对称、短期激励、囚徒困境等）
 - **何时使用**：
   - 写政策制定、企业影响力渗透、公私合作场景时
@@ -61,6 +66,7 @@
   6. 规制俘获
 
 #### `ordinary-people-scenes.md`
+
 - **作用**：收集日常生活中的语言压缩场景（家长群、作文批改、医嘱、求职等）
 - **何时使用**：
   - 写沈仪、罗启或苏奕的普通人视角章节时
@@ -77,6 +83,7 @@
 ### 3. 角色与叙事设计
 
 #### `generational-handoff.md`
+
 - **作用**：第一代与第二代主角的代际冲突设计、关键对话场景、避免第二代沦为传声筒的原则
 - **何时使用**：
   - **第四部后，任何涉及苏奕或方闻的写作任务前，必读此文件**
@@ -113,11 +120,13 @@
 ### 新 note 的命名与格式建议
 
 **命名规则**：
+
 - 使用 kebab-case：`topic-name.md`
 - 名称应清晰表达主题，避免过于宽泛（如 `ideas.md`）
 - 优先使用功能性命名（如 `generational-handoff.md`）而非时间性命名（如 `2025-12-brainstorm.md`）
 
 **基本格式**：
+
 ```markdown
 # [主题名称]
 
@@ -154,17 +163,20 @@
 ### notes 与 outline 的边界
 
 **何时放在 notes/**：
+
 - 设计过程、多个备选方案、尚未确定的想法
 - 伏笔清单、场景点子库、术语积累
 - 主题性分析、理论支撑、现实锚点搜索结果
 - 写作技巧、叙事原则、自我提醒
 
 **何时放在 outline/**：
+
 - 已确定的世界观设定、结构规划、角色弧线
 - 必须保持一致的核心逻辑链
 - 需要频繁引用的"源代码级"设定
 
 **灰色地带处理**：
+
 - 如果某个 note 已经成熟到可以作为"确定设定"，考虑整合到 `outline/` 相关文件
 - 如果 `outline/` 中的某个设定需要大幅调整，可以先在 `notes/` 中推演备选方案，确定后再更新 `outline/`
 
@@ -182,16 +194,19 @@
 ## 快速检索
 
 **按写作阶段**：
+
 - 第一至三部：`corporate-capture-mechanisms.md`, `ordinary-people-scenes.md`
 - 第四至七部：`generational-handoff.md` **（必读）**
 - 全程适用：`sai-measurement-paradox.md`, `chaos-vs-precision-meta-theme.md`
 
 **按角色视角**：
+
 - 林峤、周曼、杜衡（精英线）：`chaos-vs-precision-meta-theme.md`, `corporate-capture-mechanisms.md`
 - 沈仪、罗启（普通人线）：`ordinary-people-scenes.md`
 - 苏奕、方闻（第二代）：`generational-handoff.md` **（必读）**
 
 **按主题线索**：
+
 - A 线（语言压缩）：`ordinary-people-scenes.md`, `generational-handoff.md`
 - B 线（指标治理）：`sai-measurement-paradox.md`, `corporate-capture-mechanisms.md`
 - C 线（因果债务/Reset）：`chaos-vs-precision-meta-theme.md`
