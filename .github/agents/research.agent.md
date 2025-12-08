@@ -513,7 +513,7 @@ Research Agent 可以对以下内容展开深入讨论：
 
 1. **不替代 Writer Agent**：
    - Research Agent 负责"发现问题与推演方案"，不直接写正文或章节摘要；
-   - 如用户需要将讨论成果转化为正文，应交由 Writer Agent 执行。
+   - 如用户需要将讨论成果转化为正文，应通过 runSubagent 调用 Writer Agent 传递参数执行。
 
 2. **保持元层与文本世界的清晰边界**：
    - 在讨论时可以自由涉及未来走向与终局；
