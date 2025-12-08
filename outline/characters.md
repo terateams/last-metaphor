@@ -17,6 +17,7 @@
     - `characters/fang-wen.md` - 方闻（技术信徒，B/C 线年轻执行者）
   - **特殊角色**：
     - `characters/pi-sentinel.md` - Π-哨兵（古人回声，非人角色）
+    - `characters/jiu-duan.md` - 旧端（文明守夜人，旧协议接口）
 - **重要配角**：
   - `characters/supporting-cast.md`
   - `characters/han-ce.md` - 韩策（军方代表，已降级为重要配角）
