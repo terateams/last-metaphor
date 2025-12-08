@@ -114,9 +114,88 @@ Writer Agent 在生成正文或世界内文书时，应主动进行术语自查�
 
 ---
 
-## 三、outline 索引与使用说明
+## 三、outline 文件体系与应用机制
 
-本节作为 `outline/` 的"使用手册"。每次写作任务前，Writer Agent 应按需检索对应条目。
+> `outline/` 是整部小说的"源代码"，正文只是"可读编译结果"。本节定义 outline 文件的分层分类、应用优先级与同步机制。
+
+### 3.0 Outline 文件分层分类
+
+将 `outline/` 下的文件按**稳定性与写作流程中的使用频率**分为三层：
+
+#### 第一层：稳定锚点（几乎不改，每次写作默认加载）
+
+| 文件 | 核心内容 | 使用场景 |
+|------|---------|----------|
+| `worldview.md` | 世界观三公理（A/B/C）、古人回声、Reset 机制 | 任何涉及设定的写作 |
+| `theme-and-synopsis.md` | 母题陈述、读者体验目标 | 检验剧情是否偏航 |
+| `core-logic-chain.md` | 因果主链（方便→坟墓） | 定位当前事件在逻辑链中的位置 |
+| `axioms.md` | 总公理 + 部公理 + 章节公理句规则 | 每章开写前找公理句 |
+
+#### 第二层：结构骨架（部级调整时修改，章节写作时频繁参考）
+
+| 文件 | 核心内容 | 使用场景 |
+|------|---------|----------|
+| `structure-7parts.md` | 七部结构、小章提纲、时间尺度 | 定位当前章节位置与任务 |
+| `characters.md` | 角色索引、配额护栏、代际分工 | 确认本章出场人物 |
+| `characters/*.md` | 各角色详细画像与弧线 | 写涉及该角色的场景 |
+| `character-appearance-index.md` | 角色出场节点索引 | 检查人物是否应在本章出场 |
+| `timeline.md` | 时间线与事件节点 | 保持时间逻辑一致 |
+| `writing-roadmap.md` | 写作进度与优先级 | 完成某部后检查交付物 |
+
+#### 第三层：工具与风格（每章开写时快速自查）
+
+| 文件 | 核心内容 | 使用场景 |
+|------|---------|----------|
+| `writing-notes.md` | 写作风格、章节七点法、词汇黑白名单 | **每章开写前 30 秒必读** |
+
+### 3.0.1 Outline 文件同步机制（关键）
+
+当某个 outline 文件被修改时，必须检查并可能同步以下关联文件：
+
+#### 同步触发规则
+
+| 被修改的文件 | 必须检查的关联文件 | 同步动作 |
+|-------------|-------------------|----------|
+| `worldview.md` | `core-logic-chain.md`、`axioms.md`、`theme-and-synopsis.md` | 确认因果链与公理是否仍然对齐 |
+| `structure-7parts.md` | `character-appearance-index.md`、`timeline.md`、`writing-roadmap.md`、`chapters/*/summary.md` | 更新出场节点、时间线、进度检查表、章节摘要 |
+| `characters.md` | `characters/*.md`（所有子文件）、`character-appearance-index.md` | 确认索引与详细画像一致、出场节点对齐 |
+| `characters/*.md`（任一子文件） | `characters.md`（父索引）、`character-appearance-index.md` | 更新索引中的一句话标签与出场节点 |
+| `axioms.md` | `writing-notes.md`（第十节） | 确认章节公理句规则与金句仓库同步 |
+| `timeline.md` | `structure-7parts.md`、`character-appearance-index.md` | 确认事件顺序与角色出场时间一致 |
+
+#### 同步执行 SOP
+
+1. **修改前**：明确修改范围，预判会影响哪些关联文件；
+2. **修改时**：在本文件中完成修改；
+3. **修改后**：
+   - 按上表检查所有关联文件；
+   - 如有不一致，优先修改"下游文件"（如：`worldview.md` 变了，改 `core-logic-chain.md`）；
+   - 如下游修改会导致更大范围连锁反应，先在 `notes/` 中记录待办，再逐步同步；
+4. **验证**：修改完成后，用 `outline/README.md` 中的"两条高频使用路径"走一遍，确认整体一致。
+
+#### 角色系统专项同步规则
+
+由于角色系统涉及多个文件，特别定义以下同步规则：
+
+- **新增角色**：
+  1. 在 `characters.md` 中登记索引条目（一句话功能标签 + 弧线起终点）；
+  2. 创建 `characters/xxx.md` 详细画像；
+  3. 在 `character-appearance-index.md` 中添加出场节点；
+  4. 检查是否超出配额（主角团 7–8 人，配角 ≤ 18 人）。
+
+- **修改角色弧线**：
+  1. 在 `characters/xxx.md` 中修改详细画像；
+  2. 更新 `characters.md` 中的一句话标签；
+  3. 检查 `character-appearance-index.md` 中的出场节点是否需要调整；
+  4. 如弧线变化影响某部结构，检查 `structure-7parts.md` 是否需要同步。
+
+- **角色降级/删除**：
+  1. 在 `characters.md` 中标记降级（如"韩策：军方代表，已从主角团降级为重要配角"）；
+  2. 将详细画像移入 `characters/supporting-cast.md` 或保留独立文件但降低出场密度；
+  3. 更新 `character-appearance-index.md` 中的出场节点；
+  4. 检查已写章节中该角色的戏份是否需要调整。
+
+---
 
 ### 3.1 `outline/worldview.md`
 
@@ -207,6 +286,13 @@ Writer Agent 在生成正文或世界内文书时，应主动进行术语自查�
 ### 3.8 `notes/` 目录使用说明
 
 `notes/` 目录用于记录松散想法、伏笔清单、术语记录、主题分析与设计笔记，是介于"源代码级 outline"与"公开文本 chapters"之间的工作区。
+
+**notes 与 outline 的协作关系**：
+
+- `outline/` = **定义层**：规则、结构、约束（稳定）
+- `notes/` = **讨论层**：推演、分析、备选方案（活跃）
+- 当 notes 中的某个讨论成熟到需要成为"规则"时，应 **提炼核心结论并更新到对应的 outline 文件**
+- 当 outline 中的某个设定需要深入探讨时，应 **在 notes 中创建专题笔记进行推演**
 
 **核心 notes 文件**：
 
