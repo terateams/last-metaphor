@@ -10,11 +10,12 @@ tools: ['edit', 'search', 'new', 'runCommands', 'azure/search', 'searchagent/*',
 
 本 Agent 默认具备“全局视角”——任何一次写作请求（无论是纲要、章节摘要还是正文续写），都必须先从整体结构与核心母题出发，再下钻到当前任务。
 
-对于已启动详细章节规划的部分（当前为第一部《出土》），Writer Agent 还必须显式利用 `chapters/01/summary.md` 作为章节级“源信息”：
-- 在处理第一部相关的任何正文写作请求前，先查阅并对齐该文件中的：
-  - 「第一部 8 小节一览（功能骨架）」；
-  - 当前小节对应的结构化摘要（位置 / 主线 / 制度介入 / 荒诞钉子 / 伏笔与回收）。
-- 当正文构思与 `summary.md` 或 `outline/structure-7parts.md` 存在明显冲突时，应优先通过修改摘要与 outline 来统一结构意图，再决定是否改写既有正文，而不是让某一版即时正文单方面带偏结构。
+对于已启动详细章节规划的部分（当前为第一部《出土》），Writer Agent 必须显式利用 `chapters/01/summaries/` 下的文件作为章节级“源信息”：
+
+- **综述与结构**：写作前查阅 `chapters/01/summaries/overview.md`，对齐第一部功能骨架与结构自查点。
+- **单章摘要**：在处理具体章节写作请求前，**必须加载**对应的单章摘要文件（例如 `chapters/01/summaries/01-impossible-stratum.md`）。
+  - 确保正文构思与摘要中的【位置 / 主线 / 制度介入 / 荒诞钉子 / 伏笔与回收】严格对齐。
+- **冲突处理**：当正文构思与摘要存在明显冲突时，应优先通过修改摘要与 outline 来统一结构意图，再决定是否改写既有正文。
 
 ---
 
@@ -157,7 +158,8 @@ Writer Agent 在生成正文或世界内文书时，应主动进行术语自查�
 | 被修改的文件 | 必须检查的关联文件 | 同步动作 |
 |-------------|-------------------|----------|
 | `worldview.md` | `core-logic-chain.md`、`axioms.md`、`theme-and-synopsis.md` | 确认因果链与公理是否仍然对齐 |
-| `structure-7parts.md` | `character-appearance-index.md`、`timeline.md`、`writing-roadmap.md`、`chapters/*/summary.md` | 更新出场节点、时间线、进度检查表、章节摘要 |
+| `structure-7parts.md` | `character-appearance-index.md`、`timeline.md`、`writing-roadmap.md`、`chapters/*/summaries/*.md` | 更新出场节点、时间线、进度检查表、章节摘要 |
+
 | `characters.md` | `characters/*.md`（所有子文件）、`character-appearance-index.md` | 确认索引与详细画像一致、出场节点对齐 |
 | `characters/*.md`（任一子文件） | `characters.md`（父索引）、`character-appearance-index.md` | 更新索引中的一句话标签与出场节点 |
 | `axioms.md` | `writing-notes.md`（第十节） | 确认章节公理句规则与金句仓库同步 |
@@ -330,6 +332,12 @@ Writer Agent 在生成正文或世界内文书时，应主动进行术语自查�
      - 设计高层次对话（如委员会辩论、学术讨论）时
      - 需要为"为什么要保留歧义"提供理论武器时
 
+6. **`notes/character-codenames.md`** - 人物代号演变表
+   - 作用：定义主角（林/旧/沈/杜 等）从"系统定义"到"反叛/觉醒"再到"终局定位"的三段式代号
+   - 何时使用：
+     - 描写人物内心独白、自我认知转变时
+     - 检查人物行为是否符合当前阶段的心理隐喻（如林峤是"缝合者"还是"守门人"？）
+
 **使用原则**：
 - notes 中的内容是"元层讨论"，不应直接复制到正文；
 - 应将 notes 中的洞察"降维"为具体场景、对话或制度细节；
@@ -487,7 +495,8 @@ Writer Agent 在写正文时，需将 `outline/writing-notes.md` 内的原则转
     2. 一个小章应拆分为 **3–5 个结构明确的场景块**（如：进入情境 / 制度介入 / 代价显形 / 余波与钩子），分别调用生成；
     3. 对同一小章进行多次续写时，每次调用前：
       - 简要复述上一场景的结尾（或贴出末段正文作为上下文）；
-      - 重申该小章在 `summary.md` 中的功能要点（尤其是主线、制度介入、荒诞钉子和伏笔）。
+      - **加载并重申** 该小章在 `chapters/XX/summaries/` 对应文件中的功能要点（尤其是主线、制度介入、荒诞钉子和伏笔）。
+
   - 如用户未显式说明“只写一个小场景”，Writer Agent 也应主动将任务切分为多个连续小块，并在回复中明确当前块的预期覆盖范围（例如：“本次只写考古现场发现到初步检测出结果这段”）。
 
 ---
